@@ -1,6 +1,42 @@
 <!doctype html>
 <html lang="es">
 <head>
+  <script id="el-privacy-early-bootstrap">
+  /* Privacy after sign-out. Runs BEFORE all modules read local progress.
+     A logout/reload can trigger pagehide handlers that write old in-memory state;
+     this marker clears it again on the NEXT page load. */
+  (()=>{'use strict';
+   const flag='el-privacy-clear-on-reload-v1';
+   const prefix=/^(english-lab|el-resume|lab-uk|uk-)/i;
+   const excluded=/service_url|supabase|secret|api[_-]?key/i;
+   const cfg='el-cloud-config-v1';
+   const getKeys=()=>{const out=[];try{for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);if(k&&prefix.test(k)&&k!==cfg&&!excluded.test(k))out.push(k);
+   }}catch{}return out;};
+   const wipe=()=>{let n=0;for(const k of getKeys()){try{localStorage.removeItem(k);n++}catch{}}return n;};
+   window.EnglishLabPrivacy={getKeys,wipe,flag};
+   try{if(localStorage.getItem(flag)==='1'){
+    wipe();localStorage.removeItem('el-cloud-owner-v1');localStorage.removeItem('el-cloud-last-synced-v1');localStorage.removeItem(flag);
+   }}catch{}
+   // Restore the cloud copy AFTER the old document's pagehide handlers have finished.
+   // This avoids stale in-memory exercises overwriting a freshly imported cloud snapshot.
+   try{
+    const pending=sessionStorage.getItem('el-privacy-pending-cloud-restore-v1');
+    if(pending){
+     const restore=JSON.parse(pending);
+     if(!restore||!restore.userId||!restore.payload||typeof restore.payload!=='object')throw Error('Invalid cloud restore');
+     wipe();
+     for(const [k,v] of Object.entries(restore.payload)){
+      if(prefix.test(k)&&k!==cfg&&!excluded.test(k)&&typeof v==='string'&&v.length<=800000)localStorage.setItem(k,v);
+     }
+     localStorage.setItem('el-cloud-owner-v1',restore.userId);
+     localStorage.setItem('el-cloud-last-synced-v1',restore.updatedAt||new Date().toISOString());
+     sessionStorage.removeItem('el-privacy-pending-cloud-restore-v1');
+    }
+   }catch(e){console.warn('English Lab UK: no se pudo terminar la restauración:',e)}
+  })();
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#10223f">
@@ -2922,7 +2958,7 @@ window.addEventListener('pageshow',syncView);
 <div class="el-account-modal" role="dialog" aria-modal="true" aria-label="Mi cuenta y progreso sincronizado">
 <button type="button" id="el-account-close" class="el-account-close" aria-label="Cerrar">×</button>
 <h2>☁ Mi cuenta de English Lab</h2>
-<p>Continúa en tu móvil o laptop. El progreso sigue guardándose localmente y, al configurar la nube, también se sincronizará con tu cuenta.</p>
+<p>Continúa en tu móvil o laptop. Con tu cuenta, tu progreso se guarda en Supabase. Al cerrar sesión, la plataforma guarda primero los últimos cambios y limpia los ejercicios personales de este navegador.</p>
 <div id="el-account-status" class="el-account-status" role="status" aria-live="polite"></div>
 <div id="el-account-setup">
 <div class="el-account-note"><b>Primera configuración (administrador)</b><div>Para crear usuarios reales en GitHub Pages, necesitas un proyecto Supabase. Copia su <b>Project URL</b> y su clave pública <b>publishable/anon</b>. Ejecuta el archivo <code>supabase_setup.sql</code> una sola vez en el SQL Editor. Nunca uses una clave secreta o service_role.</div></div>
@@ -2946,7 +2982,7 @@ window.addEventListener('pageshow',syncView);
 <div class="el-account-rows"><button class="el-button" type="button" id="el-cloud-push">☁ Guardar mi avance en la nube</button><button class="el-button alt" type="button" id="el-cloud-pull">↓ Recuperar avance de la nube</button></div>
 <div class="el-account-rows"><button class="el-button alt" type="button" id="el-cloud-sync">Sincronizar ahora</button><button class="el-button alt" type="button" id="el-account-logout">Cerrar sesión</button></div>
 </div>
-<div class="el-account-note">📌 Solo se sincronizan puntuaciones, palabras, dictados, borradores y preferencias de estudio. Los MP3 y PDF privados permanecen en este dispositivo. No borres los datos del navegador sin confirmar que la nube guardó tu avance.</div>
+<div class="el-account-note">📌 Al cerrar sesión se sincronizan los avances y se ocultan del navegador compartido. Los archivos MP3 y PDF que importaste siguen siendo archivos privados de tu dispositivo y no se suben a Supabase. No borres datos del navegador antes de confirmar el respaldo.</div>
 </div></div>
 <script id="el-account-vocab-listen">
 (function(){
@@ -3084,6 +3120,13 @@ const urlInput=$('el-cloud-url'),keyInput=$('el-cloud-key');
 const sha=$('el-account-shade'), status=$('el-account-status');
 const setup=$('el-account-setup'),auth=$('el-account-auth'),signed=$('el-account-signed');
 let client=null,user=null,enabled=false,lastSnapshot='',busy=false;
+let privacyLogoutInProgress=false;
+const privacy=window.EnglishLabPrivacy;
+function markAndClearPrivateProgress(){
+ try{localStorage.setItem(privacy.flag,'1');privacy.wipe();localStorage.removeItem(ownerKey);localStorage.removeItem(lastSyncKey);return true}
+ catch(e){message('No se pudo limpiar el progreso local de forma segura: '+e.message);return false}
+}
+
 function message(x){if(status)status.textContent=x;const banner=$('el-cloud-banner');if(banner)banner.textContent=x;}
 function switchUi(){
  setup.classList.toggle('el-account-hidden',!!client);
@@ -3117,9 +3160,19 @@ async function connect(cfg){
  switchUi();
  const {data,error}=await client.auth.getSession();if(error)throw error;
  user=data?.session?.user||null;switchUi();
+ if(!user && localStorage.getItem(ownerKey)){
+  // A session ended in another tab or expired. Do not show its stored answers.
+  if(markAndClearPrivateProgress()){location.reload();return;}
+ }
  if(user)await initAccount();else message('Servicio conectado. Crea una cuenta o inicia sesión para sincronizar tus avances.');
  client.auth.onAuthStateChange((_event,session)=>{
-  const next=session?.user||null;const changed=user?.id!==next?.id;user=next;if(changed)enabled=false;
+  const next=session?.user||null,previousId=user?.id||null,nextId=next?.id||null;
+  if(previousId && previousId!==nextId && !privacyLogoutInProgress){
+   // A remote sign-out/account swap must never leave the previous account's answers visible.
+   enabled=false;
+   if(markAndClearPrivateProgress()){location.reload();return;}
+  }
+  const changed=previousId!==nextId;user=next;if(changed)enabled=false;
   switchUi();
  });
 }
@@ -3131,43 +3184,58 @@ $('el-cloud-connect').addEventListener('click',async()=>{
 });
 function getSnapshot(){
  const obj={};let bytes=0,skipped=0;
- for(let i=0;i<localStorage.length;i++){
-  const k=localStorage.key(i);
-  if(!/^(english-lab|el-resume|lab-uk|uk-)/i.test(k)||k===confKey||k===ownerKey||/service_url|supabase|secret|api[_-]?key/i.test(k))continue;
+ for(const k of privacy.getKeys()){
   const v=localStorage.getItem(k);if(v==null)continue;
   if(v.length>800000||bytes+v.length>2600000){skipped++;continue;}
   obj[k]=v;bytes+=v.length;
  }
  return {data:obj,skipped};
 }
-function importSnapshot(obj){
- if(!obj||typeof obj!=='object'||Array.isArray(obj))throw Error('El respaldo de la nube no tiene un formato válido.');
- for(const [k,v] of Object.entries(obj)){
-  if(!/^(english-lab|el-resume|lab-uk|uk-)/i.test(k)||k===confKey||k===ownerKey||typeof v!=='string'||v.length>800000||/service_url|supabase|secret|api[_-]?key/i.test(k))continue;
-  localStorage.setItem(k,v);
- }
- localStorage.setItem(ownerKey,user.id);
+function stageCloudRestore(obj,updatedAt){
+ if(!user||!obj||typeof obj!=='object'||Array.isArray(obj))throw Error('El respaldo de la nube no tiene un formato válido.');
+ // Stage in per-tab storage. The early bootstrap applies this AFTER unload handlers run.
+ // If staging fails, keep both copies untouched and ask for a retry.
+ sessionStorage.setItem('el-privacy-pending-cloud-restore-v1',JSON.stringify({userId:user.id,payload:obj,updatedAt:updatedAt||new Date().toISOString()}));
 }
+
 async function cloudRead(){const {data,error}=await client.from('study_progress').select('payload,updated_at').eq('user_id',user.id).maybeSingle();if(error)throw error;return data;}
 async function cloudWrite(force=false){
- if(!user||!client||busy)return;
- if(!enabled&&!force){message('Elige «Guardar en la nube» o «Recuperar de la nube» para iniciar la sincronización.');return;}
- const ss=getSnapshot();const str=JSON.stringify(ss.data);if(!force&&str===lastSnapshot)return;
+ if(!user||!client||busy)return false;
+ const owned=localStorage.getItem(ownerKey);
+ if(owned && owned!==user.id){message('No puedes subir avances de otra cuenta. Recupera primero tu propio respaldo.');return false;}
+ if(!enabled){message('Elige primero «Guardar mi avance en la nube» o «Recuperar avance de la nube».');return false;}
+ const ss=getSnapshot();
+ if(ss.skipped){message('Hay datos demasiado grandes que no caben en el respaldo. Se conservaron en este navegador; no cierres sesión hasta respaldarlos.');return false;}
+ const str=JSON.stringify(ss.data);if(!force&&str===lastSnapshot)return true;
  busy=true;
  try{
-  const syncedAt=new Date().toISOString();const {error}=await client.from('study_progress').upsert({user_id:user.id,payload:ss.data,updated_at:syncedAt},{onConflict:'user_id'});
+  const syncedAt=new Date().toISOString();
+  const {error}=await client.from('study_progress').upsert({user_id:user.id,payload:ss.data,updated_at:syncedAt},{onConflict:'user_id'});
   if(error)throw error;
   lastSnapshot=str;enabled=true;localStorage.setItem(ownerKey,user.id);localStorage.setItem(lastSyncKey,syncedAt);
-  message('✓ Tu avance está guardado en la nube.'+(ss.skipped?' '+ss.skipped+' datos grandes quedan solo en este dispositivo.':''));
- }catch(e){message('No se pudo sincronizar: '+e.message+'. Tus datos locales se conservan.');}
+  message('✓ Tu avance está guardado en la nube.');
+  return true;
+ }catch(e){message('No se pudo sincronizar: '+e.message+'. Tus datos locales se conservan.');return false;}
  finally{busy=false;}
 }
 async function initAccount(){
  if(!user)return;
  try{
+  const previousOwner=localStorage.getItem(ownerKey);
+  if(previousOwner && previousOwner!==user.id){
+   // An account changed without normal logout: do NOT upload the previous user's records.
+   const foreignRemote=await cloudRead();
+   if(foreignRemote)stageCloudRestore(foreignRemote.payload,foreignRemote.updated_at);
+   if(!markAndClearPrivateProgress())return;
+   if(!foreignRemote)localStorage.setItem(ownerKey,user.id);
+   location.reload();return;
+  }
   const remote=await cloudRead();const mine=getSnapshot();const haveLocal=Object.keys(mine.data).length>0;
-  if(!remote){enabled=true;await cloudWrite(true);return;}
-  if(!haveLocal){importSnapshot(remote.payload);localStorage.setItem(lastSyncKey,remote.updated_at);message('Progreso de la nube recuperado. Recarga para ver tus avances.');enabled=true;location.reload();return;}
+  if(!remote){
+   // No cloud record: allow an explicitly new account to create its own backup.
+   enabled=true;await cloudWrite(true);return;
+  }
+  if(!haveLocal){stageCloudRestore(remote.payload,remote.updated_at);enabled=true;location.reload();return;}
   if(localStorage.getItem(ownerKey)===user.id && localStorage.getItem(lastSyncKey)){
    const last=Date.parse(localStorage.getItem(lastSyncKey));
    const cloud=Date.parse(remote.updated_at);
@@ -3176,8 +3244,8 @@ async function initAccount(){
     message('✓ Tu cuenta está conectada. Los cambios se intentarán guardar automáticamente.');return;
    }
   }
-  message('Se encontraron avances locales y en la nube. Elige qué copia quieres conservar antes de sincronizar.');
- }catch(e){message('Cuenta conectada, pero no se pudo leer el progreso: '+e.message+'. Revisa las políticas RLS y el SQL de instalación.');}
+  message('Existen avances en este navegador y en la nube. Para no mezclar cuentas, elige qué copia conservar antes de sincronizar.');
+ }catch(e){message('Cuenta conectada, pero no se pudo leer el progreso: '+e.message+'. Tus datos locales no se han borrado.');}
 }
 $('el-auth-login').addEventListener('click',async()=>{
  let email=$('el-auth-email').value.trim(),password=$('el-auth-password').value;
@@ -3205,19 +3273,41 @@ $('el-auth-signup').addEventListener('click',async()=>{
  finally{button.disabled=false;resetCaptcha();}
 });
 $('el-cloud-push').addEventListener('click',async()=>{
+ const owned=localStorage.getItem(ownerKey);
+ if(owned&&owned!==user?.id){message('Estos avances corresponden a otra cuenta. No se pueden subir; recupera tu copia de la nube.');return;}
  if(!confirm('¿Guardar los avances de ESTE dispositivo en tu cuenta? Esto reemplazará la copia de la nube.'))return;
  enabled=true;await cloudWrite(true);
 });
 $('el-cloud-pull').addEventListener('click',async()=>{
  if(!confirm('¿Recuperar avances de la nube en este dispositivo? Se reemplazarán los avances guardados aquí.'))return;
- try{const remote=await cloudRead();if(!remote){message('No existe todavía una copia de progreso en la nube.');return;}
-  importSnapshot(remote.payload);localStorage.setItem(lastSyncKey,remote.updated_at);enabled=true;message('Avances recuperados. Recargando...');setTimeout(()=>location.reload(),600);
- }catch(e){message('No se pudo recuperar el avance: '+e.message);}
+ try{
+  const remote=await cloudRead();if(!remote){message('No existe todavía una copia de progreso en la nube.');return;}
+  stageCloudRestore(remote.payload,remote.updated_at);
+  enabled=true;message('Avances listos para recuperar. Recargando…');
+  location.reload();
+ }catch(e){message('No se pudo recuperar el avance: '+e.message+'. Tus datos permanecen intactos.');}
 });
 $('el-cloud-sync').addEventListener('click',()=>cloudWrite(true));
 $('el-account-logout').addEventListener('click',async()=>{
- try{await client.auth.signOut();user=null;enabled=false;switchUi();message('Sesión cerrada. Tu progreso local permanece en este navegador.');}
- catch(e){message('Error al cerrar sesión: '+e.message);}
+ if(!user||privacyLogoutInProgress)return;
+ const btn=$('el-account-logout');btn.disabled=true;
+ // Do not log out and erase the active copy unless the account's cloud save succeeds.
+ try{
+  if(localStorage.getItem(ownerKey)!==user.id){
+   message('Este avance aún no está vinculado de forma segura a tu cuenta. Primero recupera tus avances de la nube, o confirma y guarda tu copia local.');return;
+  }
+  enabled=true;
+  message('Guardando tus últimos avances antes de cerrar sesión…');
+  const saved=await cloudWrite(true);
+  if(!saved){message('No se cerró la sesión: no pudimos confirmar el respaldo. Tus ejercicios siguen intactos.');return;}
+  privacyLogoutInProgress=true;enabled=false;
+  const {error}=await client.auth.signOut();if(error)throw error;
+  if(!markAndClearPrivateProgress()){
+   message('Sesión cerrada, pero no se pudo limpiar el navegador. Borra los datos del sitio después de verificar tu respaldo.');return;
+  }
+  user=null;switchUi();location.reload();
+ }catch(e){privacyLogoutInProgress=false;message('Error al cerrar sesión: '+e.message+'. El progreso local se conserva.');}
+ finally{btn.disabled=false;}
 });
 let syncInProgress=false;
 setInterval(async()=>{
