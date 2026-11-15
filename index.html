@@ -492,6 +492,84 @@ html,body{max-width:100%;min-width:0;overflow-x:clip}
 @media(max-width:620px){.el-section-toolbar{gap:6px;margin:9px 0}.el-section-toolbar button{min-height:37px;padding:7px 10px;font-size:12px}.el-save-state{width:100%;margin-left:1px}.el-dictation{padding:17px;margin-bottom:90px}.el-coach-controls .btn,.el-coach-actions .btn{flex:1;min-width:120px}.el-coach-top{align-items:center}.el-coach-kicker{font-size:10px}.el-dictation textarea{font-size:18px}}
 
 </style>
+<style id="el-turnstile-style">
+/* CAPTCHA integrado solo al cuadro de autenticación; no modifica los módulos. */
+#el-turnstile-area{margin:12px 0 8px;padding:12px;border:1px solid #d5e6ed;border-radius:12px;background:#f6fbfd}
+#el-turnstile-widget{min-height:65px;max-width:100%;overflow:hidden}
+.el-turnstile-note{font-size:12px!important;line-height:1.5!important;color:#456475!important;margin:8px 0 0!important}
+@media(max-width:400px){#el-turnstile-area{padding:8px}}
+</style>
+<style id="el-new-learning-styles">
+.el-vocab-usage{margin:12px 0 4px;padding:13px 15px;background:#f1faf8;border:1px solid #cceae5;border-radius:12px;text-align:left;line-height:1.55;color:#24535b;font-size:13px}
+.el-vocab-usage b{display:block;margin-bottom:5px;color:#075d6c}
+.el-vocab-usage p{margin:6px 0!important;font-size:13px!important;line-height:1.6!important}
+.el-vocab-usage small{display:block;color:#617c81;font-size:11px;margin-top:7px}
+.el-pv-five{padding:clamp(17px,3vw,27px);background:linear-gradient(130deg,#ffffff,#f6fbfe);border:1px solid #c7dfe8;border-radius:18px;margin:14px 0 20px;box-shadow:0 7px 22px #0c4e6209}
+.el-pv-five .el-five-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center}
+.el-pv-five h2{margin:8px 0;font-size:clamp(20px,3vw,27px);color:#16465a}
+.el-pv-five p{font-size:13px;color:#4b687a;margin:5px 0 11px}
+.el-pv-five .el-five-meta{font-weight:700;color:#185c70;font-size:12px}
+.el-five-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:12px 0}
+.el-five-actions button,.el-five-actions select{padding:10px 12px;border:1px solid #bfd7df;border-radius:10px;background:#fff;color:#165670;font-size:13px;font-weight:750;cursor:pointer}
+.el-five-actions button:disabled{opacity:.5;cursor:not-allowed}
+.el-five-actions .el-five-primary{color:white;background:#176c91;border-color:#176c91}
+.el-five-tip{padding:12px 14px;background:#eaf7f7;border-left:4px solid #16a4a7;border-radius:9px;font-size:13px;line-height:1.65;color:#1e5262;margin:10px 0}
+.el-five-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.el-five-field{border:1px solid #dbe6eb;background:white;border-radius:12px;padding:13px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.el-five-field:last-child{grid-column:1/-1}
+.el-five-field label{font-size:13px;font-weight:740;color:#24465a;line-height:1.45}
+.el-five-field input,.el-five-field textarea{width:100%;padding:11px;border:1px solid #becfd9;border-radius:9px;background:#fcfeff;color:#183c52;font:inherit;font-size:14px;min-height:44px}
+.el-five-field textarea{min-height:82px;resize:vertical}
+.el-five-field input:focus,.el-five-field textarea:focus{outline:3px solid #8de0eb;outline-offset:1px}
+.el-five-feedback{font-size:12px;color:#536c7d;min-height:18px;line-height:1.5}
+.el-five-feedback.ok{color:#137b52;font-weight:750}.el-five-feedback.no{color:#b33c4f;font-weight:700}
+.el-five-meter{height:9px;background:#e0eef1;border-radius:99px;overflow:hidden;margin:10px 0 5px}.el-five-meter span{display:block;background:#25a88c;height:100%;transition:width .2s}
+.el-five-completion{font-size:13px;font-weight:800;color:#096c55;min-height:18px}
+.el-five-alert{font-size:12px;color:#6e6171;line-height:1.5}
+@media(max-width:640px){.el-five-fields{grid-template-columns:1fr}.el-five-field:last-child{grid-column:auto}.el-pv-five{padding:15px}.el-five-actions>*{flex:1 1 auto}.el-vocab-usage{padding:10px}}
+</style>
+<style id="el-phrasal-phases-style">
+.el-study-phases{background:#fff;border:1px solid #cce4eb;box-shadow:0 8px 28px #103d5510;border-radius:19px;margin:14px 0 25px;padding:clamp(16px,3vw,26px);color:#173f53}
+.el-phase-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.el-phase-eyebrow{font-size:10px;letter-spacing:.09em;font-weight:850;color:#16739e}
+.el-phase-head h2{font-size:clamp(21px,2.6vw,29px);margin:5px 0 7px;color:#123b51}
+.el-phase-head p{font-size:13px;color:#5b7382;margin:0 0 13px}
+.el-phase-count{border:1px solid #d6e8ee;border-radius:11px;background:#eff9fa;padding:10px 13px;font-size:12px;color:#2a6170}
+.el-phase-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:15px 0 17px}
+.el-phase-tab{border:1px solid #cfdee8;border-radius:13px;background:#f8fcff;color:#214b66;text-align:left;min-height:74px;padding:12px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;cursor:pointer}
+.el-phase-tab strong{font-size:13px}.el-phase-tab span{font-size:11px;line-height:1.35;color:#607a89}
+.el-phase-tab.active{border:2px solid #137aa0;background:#eaf8fc;padding:11px}.el-phase-tab.active strong{color:#0c597d}
+.el-phase-progress{display:flex;align-items:center;gap:16px;justify-content:space-between;margin:5px 0 16px}
+.el-phase-progress>div:first-child{display:flex;flex-direction:column;gap:2px}.el-phase-progress b{font-size:14px}.el-phase-progress span{font-size:11px;color:#617f91}
+.el-phase-bar{height:9px;background:#e0edf2;border-radius:99px;overflow:hidden;flex:1;max-width:320px}.el-phase-bar span{height:100%;display:block;background:#20a98a;transition:width .2s}
+.el-phase-hero{background:linear-gradient(113deg,#123c60,#205d7f);color:#fff;text-align:center;border-radius:19px;padding:clamp(20px,4vw,31px) 16px}
+.el-phase-hero>span{font-size:11px;letter-spacing:.11em;color:#b9e9ef;font-weight:850}
+.el-phase-hero h2{font-size:clamp(34px,6vw,55px);letter-spacing:-.02em;overflow-wrap:anywhere;margin:5px 0 13px;font-weight:850;color:#fff}
+.el-phase-hero p{font-size:11px;color:#d2e7ef;margin:8px 0 0}
+.el-phase-main-audio,.el-phase-audio{display:flex;gap:9px;flex-wrap:wrap;align-items:center;justify-content:center}
+.el-phase-main-audio button{border:1px solid #b5dbe8;background:#fff;color:#1d5274;border-radius:10px;padding:10px 13px;font-size:13px;font-weight:800}
+.el-phase-usage{background:#edf9f3;color:#1d5f51;border:1px solid #c7e7d7;border-radius:13px;padding:16px 18px;margin:14px 0}
+.el-phase-usage strong{font-size:14px}.el-phase-usage p{font-size:13px;line-height:1.6;margin:6px 0 2px;color:#285e52}.el-phase-usage small{display:block;margin-top:5px;font-size:11px;color:#60877b}
+.el-phase-unverified{background:#fff9ec;border-color:#f1dfb0;color:#725b2b}.el-phase-unverified p{color:#725b2b}.el-phase-unverified a{font-size:13px;text-decoration:underline;color:#725b2b}
+.el-phase-tasks-title{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:20px 0 12px}
+.el-phase-tasks-title h3{font-size:19px;margin:0;color:#16465d}.el-phase-tasks-title span{font-size:12px;color:#547684}
+.el-phase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.el-phase-card{border:1px solid #d8e7ee;background:#fbfdff;border-radius:14px;padding:16px;min-width:0}
+.el-phase-card:last-child{grid-column:1/-1}.el-phase-card.pass{border-color:#8cd4b6;background:#f3fcf8}.el-phase-card.retry{border-color:#f1c5c5}
+.el-phase-step{font-size:10px;font-weight:850;letter-spacing:.07em;color:#237ba3}.el-phase-card h3{font-size:16px;margin:4px 0 6px;color:#184759}
+.el-phase-card p{font-size:12px;line-height:1.55;color:#5e798b;margin:0 0 9px}.el-phase-card input[type=text]{display:block;width:100%;min-width:0;border:1px solid #b7ccd7;padding:12px;border-radius:10px;font-size:15px;color:#143e57;background:white}
+.el-phase-checkline{display:flex;align-items:center;gap:9px;font-size:12px;color:#315e70;margin:12px 0 2px;cursor:pointer}.el-phase-checkline input{accent-color:#078a7c;width:18px;height:18px}
+.el-phase-choices{display:flex;flex-wrap:wrap;gap:8px}.el-phase-choice{font-size:13px;font-weight:750;padding:9px 11px;border-radius:10px;border:1px solid #bbd5e1;background:#fff;color:#1e617f;min-height:41px;overflow-wrap:anywhere;text-align:left}
+.el-phase-choice.chosen{border-color:#1382a6;background:#e0f6fc;box-shadow:0 0 0 1px #1382a6}
+.el-phase-voice{font-size:13px;border:1px solid #4aa2bd;background:#1680a6;color:white;border-radius:10px;padding:10px 13px;font-weight:800}.el-phase-voice.light{background:#eef8fb;color:#145b78;border-color:#c9e3ec}
+.el-phase-feedback{font-size:12px!important;min-height:16px;margin:10px 0 0!important;font-weight:750}.el-phase-feedback.good{color:#0d8556}.el-phase-feedback.bad{color:#ad4551}
+.el-phase-controls{display:flex;gap:9px;flex-wrap:wrap;margin:17px 0 9px}.el-phase-controls button{border:1px solid #bed6e2;border-radius:11px;padding:11px 14px;min-height:45px;font-size:13px;font-weight:800}.el-phase-main-btn{background:#116f96;color:#fff}.el-phase-secondary{background:#fff;color:#235d75}.el-phase-next{background:#0d8b72;color:#fff;border-color:#0d8b72!important}.el-phase-controls button:disabled{opacity:.45;cursor:not-allowed}
+.el-phase-message{font-size:13px;color:#1b7164;background:#eaf8f2;padding:12px 13px;border-radius:10px;margin:8px 0!important;line-height:1.5}.el-phase-local-note{font-size:11px;color:#77909d;line-height:1.55;margin:8px 0 0!important}
+.el-phases-jump{background:#edf9fa;border:1px solid #cae4e9;border-radius:13px;margin:13px 0;padding:15px;color:#14586c}.el-phases-jump p{font-size:13px;color:#577985;margin:5px 0 11px}
+@media(max-width:960px){.el-phase-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.el-study-phases{padding:14px}.el-phase-grid{grid-template-columns:1fr}.el-phase-card:last-child{grid-column:auto}.el-phase-tabs{gap:7px}.el-phase-tab{padding:9px;min-height:78px}.el-phase-tab.active{padding:8px}.el-phase-tab strong{font-size:12px}.el-phase-tab span{font-size:10px}.el-phase-progress{flex-direction:column;align-items:stretch;gap:7px}.el-phase-bar{max-width:none}.el-phase-controls button{flex:1 1 100%}.el-phase-hero h2{font-size:37px}}
+</style>
+
 </head>
 <body>
 <div class="app-shell">
@@ -1324,8 +1402,14 @@ $('vocab-set').onchange=vocabSetChange;
 $('vocab-search').oninput=()=>{vocabIndex=0;vocabReveal=false;vocabQuiz=null;renderVocab();};
 document.querySelectorAll('[data-vocab-mode]').forEach(b=>b.onclick=()=>{vocabMode=b.dataset.vocabMode;vocabIndex=0;vocabReveal=false;vocabQuiz=null;renderVocab();});
 function makeVocabQuiz(words){if(words.length<3)return null;const questions=shuffle(words).slice(0,Math.min(8,words.length)).map(w=>{const wrong=shuffle(words.filter(x=>x.id!==w.id)).slice(0,2);const opts=shuffle([w,...wrong]);return {q:`What does “${w.word}” mean?`,options:opts.map(x=>x.meaning),correct:opts.findIndex(x=>x.id===w.id),why:`${w.word}: ${w.meaning}. ${w.example}`};});return {questions,answers:{},checked:false};}
-function renderVocab(){const words=vocabWords();$('vocab-known').textContent=knownCount();document.querySelectorAll('[data-vocab-mode]').forEach(b=>b.classList.toggle('active',b.dataset.vocabMode===vocabMode));const el=$('vocab-content');if(!words.length){el.innerHTML='<div class="empty-state"><b>No hay coincidencias</b>Prueba otra búsqueda o selecciona un tema.</div>';return;}vocabIndex=Math.min(vocabIndex,words.length-1);if(vocabMode==='cards'){const w=words[vocabIndex],known=state.known[w.id]?.reps>0;el.innerHTML=`<div class="flash-zone"><div class="flash-card"><span class="flash-level">${w.level} · ${esc(w.group)}</span><span class="flash-counter">${vocabIndex+1} de ${words.length}</span><div class="flash-word">${esc(w.word)}</div><a class="cam-wordlink" href="${camURL(w.word)}" target="_blank" rel="noopener noreferrer">📘 Cambridge UK ↗</a>${vocabReveal?`<div class="flash-meaning">${esc(w.meaning)}</div><div class="flash-example">${esc(w.example)}</div>`:'<div class="muted-note">¿Sabes qué significa?</div>'}<div class="flash-actions"><button class="btn subtle" id="vocab-hear">🔊 Escuchar</button><button class="btn primary" id="vocab-flip">${vocabReveal?'Ocultar significado':'Mostrar respuesta'}</button></div></div><div class="flash-sidebar"><h3>Tu repaso</h3><p>${known?'✓ Ya marcada como aprendida.':'Estudia la palabra y marca cómo te fue.'}</p><div class="flash-actions"><button class="btn secondary" id="vocab-good">✓ La sé</button><button class="btn subtle" id="vocab-again">↻ Repasar</button></div><div class="flash-actions" style="margin-top:12px"><button class="btn subtle" id="vocab-prev">← Anterior</button><button class="btn subtle" id="vocab-next">Siguiente palabra →</button></div><p style="margin-top:16px">Las palabras que marques como aprendidas quedan guardadas. Puedes volver a repasarlas cuando quieras.</p></div></div>`;$('vocab-hear').onclick=()=>speak(w.word,0.85,$('vocab-accent').value);$('vocab-flip').onclick=()=>{vocabReveal=!vocabReveal;renderVocab();};$('vocab-prev').onclick=()=>{vocabIndex=(vocabIndex-1+words.length)%words.length;vocabReveal=false;renderVocab();};$('vocab-next').onclick=()=>{vocabIndex=(vocabIndex+1)%words.length;vocabReveal=false;renderVocab();};$('vocab-good').onclick=()=>{markVocab(w.id,true);vocabIndex=(vocabIndex+1)%words.length;vocabReveal=false;renderVocab();};$('vocab-again').onclick=()=>{markVocab(w.id,false);vocabIndex=(vocabIndex+1)%words.length;vocabReveal=false;renderVocab();};}
-else if(vocabMode==='list'){el.innerHTML=`<div class="word-list">${words.map(w=>`<div class="word-item"><div><b>${esc(w.word)}</b><small>${esc(w.meaning)}</small><p>${esc(w.example)}</p><a class="cam-wordlink" href="${camURL(w.word)}" target="_blank" rel="noopener noreferrer">Cambridge UK ↗</a></div><div class="word-actions"><button class="round-tiny" data-speak-word="${esc(w.id)}" title="Escuchar">▶</button><button class="round-tiny ${state.known[w.id]?.reps>0?'known':''}" data-known-word="${esc(w.id)}" title="Aprendida">✓</button></div></div>`).join('')}</div>`;el.querySelectorAll('[data-speak-word]').forEach(b=>b.onclick=()=>speak(words.find(w=>w.id===b.dataset.speakWord).word,0.85,$('vocab-accent').value));el.querySelectorAll('[data-known-word]').forEach(b=>b.onclick=()=>markVocab(b.dataset.knownWord,!(state.known[b.dataset.knownWord]?.reps>0)));}
+function elVocabUsage(w){
+ const topic=String(w.group||'este tema');
+ const example=String(w.example||'').trim();
+ // The source supplies the meaning and original example; no machine-invented translations.
+ return `<div class="el-vocab-usage"><b>💡 ¿Para qué sirve esta palabra?</b><p>En el tema «${esc(topic)}», la palabra <strong>${esc(w.word)}</strong> tiene este significado: <strong>${esc(w.meaning)}</strong>.</p>${example?`<p><strong>Ejemplo en inglés:</strong> ${esc(example)}</p>`:''}<small>Observa cómo se utiliza en el ejemplo original. Su significado puede cambiar según el contexto.</small></div>`;
+}
+function renderVocab(){const words=vocabWords();$('vocab-known').textContent=knownCount();document.querySelectorAll('[data-vocab-mode]').forEach(b=>b.classList.toggle('active',b.dataset.vocabMode===vocabMode));const el=$('vocab-content');if(!words.length){el.innerHTML='<div class="empty-state"><b>No hay coincidencias</b>Prueba otra búsqueda o selecciona un tema.</div>';return;}vocabIndex=Math.min(vocabIndex,words.length-1);if(vocabMode==='cards'){const w=words[vocabIndex],known=state.known[w.id]?.reps>0;el.innerHTML=`<div class="flash-zone"><div class="flash-card"><span class="flash-level">${w.level} · ${esc(w.group)}</span><span class="flash-counter">${vocabIndex+1} de ${words.length}</span><div class="flash-word">${esc(w.word)}</div><a class="cam-wordlink" href="${camURL(w.word)}" target="_blank" rel="noopener noreferrer">📘 Cambridge UK ↗</a>${vocabReveal?`<div class="flash-meaning">${esc(w.meaning)}</div><div class="flash-example">${esc(w.example)}</div>${elVocabUsage(w)}`:'<div class="muted-note">¿Sabes qué significa?</div>'}<div class="flash-actions"><button class="btn subtle" id="vocab-hear">🔊 Escuchar palabra</button><button class="btn subtle" id="vocab-hear-example">🔊 Escuchar ejemplo</button><button class="btn primary" id="vocab-flip">${vocabReveal?'Ocultar significado':'Mostrar respuesta'}</button></div></div><div class="flash-sidebar"><h3>Tu repaso</h3><p>${known?'✓ Ya marcada como aprendida.':'Estudia la palabra y marca cómo te fue.'}</p><div class="flash-actions"><button class="btn secondary" id="vocab-good">✓ La sé</button><button class="btn subtle" id="vocab-again">↻ Repasar</button></div><div class="flash-actions" style="margin-top:12px"><button class="btn subtle" id="vocab-prev">← Anterior</button><button class="btn subtle" id="vocab-next">Siguiente palabra →</button></div><p style="margin-top:16px">Las palabras que marques como aprendidas quedan guardadas. Puedes volver a repasarlas cuando quieras.</p></div></div>`;$('vocab-hear').onclick=()=>speak(w.word,0.85,$('vocab-accent').value);$('vocab-hear-example').onclick=()=>speak(w.example,0.85,$('vocab-accent').value);$('vocab-flip').onclick=()=>{vocabReveal=!vocabReveal;renderVocab();};$('vocab-prev').onclick=()=>{vocabIndex=(vocabIndex-1+words.length)%words.length;vocabReveal=false;renderVocab();};$('vocab-next').onclick=()=>{vocabIndex=(vocabIndex+1)%words.length;vocabReveal=false;renderVocab();};$('vocab-good').onclick=()=>{markVocab(w.id,true);vocabIndex=(vocabIndex+1)%words.length;vocabReveal=false;renderVocab();};$('vocab-again').onclick=()=>{markVocab(w.id,false);vocabIndex=(vocabIndex+1)%words.length;vocabReveal=false;renderVocab();};}
+else if(vocabMode==='list'){el.innerHTML=`<div class="word-list">${words.map(w=>`<div class="word-item"><div><b>${esc(w.word)}</b><small>${esc(w.meaning)}</small><p>${esc(w.example)}</p>${elVocabUsage(w)}<a class="cam-wordlink" href="${camURL(w.word)}" target="_blank" rel="noopener noreferrer">Cambridge UK ↗</a></div><div class="word-actions"><button class="round-tiny" data-speak-word="${esc(w.id)}" title="Escuchar">▶</button><button class="round-tiny ${state.known[w.id]?.reps>0?'known':''}" data-known-word="${esc(w.id)}" title="Aprendida">✓</button></div></div>`).join('')}</div>`;el.querySelectorAll('[data-speak-word]').forEach(b=>b.onclick=()=>speak(words.find(w=>w.id===b.dataset.speakWord).word,0.85,$('vocab-accent').value));el.querySelectorAll('[data-known-word]').forEach(b=>b.onclick=()=>markVocab(b.dataset.knownWord,!(state.known[b.dataset.knownWord]?.reps>0)));}
 else{if(!vocabQuiz)vocabQuiz=makeVocabQuiz(words);if(!vocabQuiz){el.innerHTML='<div class="empty-state">Necesitas al menos tres palabras para hacer el test. Borra el filtro de búsqueda.</div>';return;}let q=vocabQuiz;el.innerHTML=`<div class="white-card"><h2>Mini test de vocabulario</h2><p class="lesson-note">Elige el significado correcto de cada palabra.</p>${choiceMarkup(q.questions,q.answers,q.checked)}<div class="lesson-actions">${q.checked?`<span class="result-pill">${q.questions.filter((x,i)=>q.answers[i]===x.correct).length} de ${q.questions.length} correctas</span>`:''}<button class="btn primary" id="vocab-check" ${q.checked?'disabled':''}>Corregir</button><button class="btn subtle" id="vocab-retry">Otro test ↻</button></div></div>`;bindQuiz(el,q.questions,q.answers,q.checked,(i,v)=>{q.answers[i]=v;renderVocab();});$('vocab-check').onclick=()=>quizCheck(q.questions,q.answers,n=>{q.checked=true;saveScore('vocabulary',vocabId,n,q.questions.length);renderVocab();});$('vocab-retry').onclick=()=>{vocabQuiz=makeVocabQuiz(words);renderVocab();};}}
 // Reading
 let readingId=D.readings.find(x=>x.id===localStorage.getItem('el-resume-reading'))?.id||D.readings[0].id,readingAns={},readingChecked=false;
@@ -2849,7 +2933,11 @@ window.addEventListener('pageshow',syncView);
 </div>
 <div id="el-account-auth" class="el-account-hidden">
 <label>Correo electrónico<input id="el-auth-email" type="email" autocomplete="email" placeholder="correo@ejemplo.com"></label>
-<label>Contraseña<input id="el-auth-password" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres"></label>
+<label>Contraseña<input id="el-auth-password" type="password" autocomplete="current-password" placeholder="Para nuevas cuentas: mínimo 12 caracteres"></label>
+<div id="el-turnstile-area" class="el-account-hidden" aria-label="Verificación de seguridad Cloudflare Turnstile">
+  <div id="el-turnstile-widget"></div>
+  <p id="el-turnstile-note" class="el-turnstile-note" role="status" aria-live="polite">Cargando verificación de seguridad…</p>
+</div>
 <div class="el-account-rows"><button class="el-button" type="button" id="el-auth-login">Iniciar sesión</button><button class="el-button alt" type="button" id="el-auth-signup">Crear cuenta</button></div>
 </div>
 <div id="el-account-signed" class="el-account-hidden">
@@ -2931,6 +3019,67 @@ refreshTarget('clasico');refreshTarget('britanico');
 
 // Optional real Supabase Auth + private cloud sync. Passwords never saved by us.
 const confKey='el-cloud-config-v1', ownerKey='el-cloud-owner-v1', lastSyncKey='el-cloud-last-synced-v1';
+// Turnstile: esta es una clave PÚBLICA. Nunca pongas aquí la Secret Key.
+// Site Key pública de English Lab UK configurada para Cloudflare Turnstile.
+// No incluir la Secret Key aquí.
+const TURNSTILE_SITE_KEY='0x4AAAAAAGBLbLMHlEYKECVB';
+const turnstileEnabled=/^0x[A-Za-z0-9_-]+$/.test(TURNSTILE_SITE_KEY);
+let captchaWidgetId=null, captchaLoading=null, captchaRendering=null;
+const captchaArea=$('el-turnstile-area'), captchaInfo=$('el-turnstile-note');
+function captchaNote(text){if(captchaInfo)captchaInfo.textContent=text;}
+function loadTurnstile(){
+ if(window.turnstile?.render)return Promise.resolve();
+ if(captchaLoading)return captchaLoading;
+ captchaLoading=new Promise((resolve,reject)=>{
+  const script=document.createElement('script');
+  script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  script.async=true;script.dataset.elTurnstile='true';
+  script.onload=()=>window.turnstile?.render?resolve():reject(new Error('No se inició Turnstile.'));
+  script.onerror=()=>reject(new Error('No se pudo cargar Cloudflare Turnstile.'));
+  document.head.appendChild(script);
+ }).catch(e=>{captchaLoading=null;throw e;});
+ return captchaLoading;
+}
+async function ensureCaptcha(){
+ if(!turnstileEnabled||!client||user||sha.hidden)return;
+ captchaArea.classList.remove('el-account-hidden');
+ if(captchaWidgetId!==null){
+  try{if(window.turnstile?.isExpired?.(captchaWidgetId))window.turnstile.reset(captchaWidgetId);}catch{}
+  return;
+ }
+ if(captchaRendering)return captchaRendering;
+ captchaRendering=(async()=>{
+  try{
+   captchaNote('Preparando verificación de seguridad…');
+   await loadTurnstile();
+   if(!client||user||sha.hidden||captchaWidgetId!==null)return;
+   const widgetId=window.turnstile.render('#el-turnstile-widget',{
+    sitekey:TURNSTILE_SITE_KEY,theme:'auto',
+    callback:()=>captchaNote('✓ Verificación completada. Ya puedes continuar.'),
+    'expired-callback':()=>captchaNote('La verificación caducó. Completa el control nuevamente.'),
+    'error-callback':()=>captchaNote('Cloudflare no pudo verificarte. Revisa la conexión e inténtalo de nuevo.'),
+    'timeout-callback':()=>captchaNote('La verificación tardó demasiado. Inténtalo otra vez.')
+   });
+   if(widgetId===null||widgetId===undefined)throw new Error('El widget no se pudo mostrar.');
+   captchaWidgetId=widgetId;
+   captchaNote('Completa la verificación de seguridad antes de iniciar sesión o registrarte.');
+  }catch(e){captchaNote('No se pudo cargar el CAPTCHA: '+e.message+'. Intenta cerrar y abrir este cuadro.');}
+ })();
+ try{await captchaRendering;}finally{captchaRendering=null;}
+}
+async function captchaOptions(){
+ if(!turnstileEnabled)return {};
+ await ensureCaptcha();
+ if(captchaWidgetId===null||!window.turnstile?.getResponse)throw Error('La verificación de seguridad aún no está lista.');
+ const token=window.turnstile.getResponse(captchaWidgetId);
+ if(!token)throw Error('Completa la verificación de seguridad de Cloudflare.');
+ return {options:{captchaToken:token}};
+}
+function resetCaptcha(){
+ if(!turnstileEnabled||captchaWidgetId===null)return;
+ try{window.turnstile?.reset(captchaWidgetId);}catch{}
+ captchaNote('Completa una nueva verificación para el próximo intento.');
+}
 const urlInput=$('el-cloud-url'),keyInput=$('el-cloud-key');
 const sha=$('el-account-shade'), status=$('el-account-status');
 const setup=$('el-account-setup'),auth=$('el-account-auth'),signed=$('el-account-signed');
@@ -2940,6 +3089,8 @@ function switchUi(){
  setup.classList.toggle('el-account-hidden',!!client);
  auth.classList.toggle('el-account-hidden',!client||!!user);
  signed.classList.toggle('el-account-hidden',!user);
+ captchaArea.classList.toggle('el-account-hidden',!turnstileEnabled||!client||!!user);
+ if(turnstileEnabled&&client&&!user&&!sha.hidden)void ensureCaptcha();
  if(user){$('el-account-email').textContent=user.email||'usuario';$('el-account-open').textContent='☁ Mi cuenta';}
  else $('el-account-open').textContent='👤 Cuenta';
 }
@@ -3031,16 +3182,27 @@ async function initAccount(){
 $('el-auth-login').addEventListener('click',async()=>{
  let email=$('el-auth-email').value.trim(),password=$('el-auth-password').value;
  if(!email||!password){message('Escribe tu correo y contraseña.');return;}
- try{const {data,error}=await client.auth.signInWithPassword({email,password});if(error)throw error;user=data.user||data.session?.user;switchUi();await initAccount();}
- catch(e){message('No se pudo iniciar sesión: '+e.message);}
+ const button=$('el-auth-login');button.disabled=true;
+ try{
+  const extra=await captchaOptions();
+  const {data,error}=await client.auth.signInWithPassword({email,password,...extra});
+  if(error)throw error;
+  user=data.user||data.session?.user;switchUi();await initAccount();
+ }catch(e){message('No se pudo iniciar sesión: '+e.message);}
+ finally{button.disabled=false;resetCaptcha();}
 });
 $('el-auth-signup').addEventListener('click',async()=>{
  let email=$('el-auth-email').value.trim(),password=$('el-auth-password').value;
- if(!email||password.length<6){message('Escribe un correo y una contraseña de al menos 6 caracteres.');return;}
- try{const {data,error}=await client.auth.signUp({email,password});if(error)throw error;
+ if(!email||password.length<12){message('Escribe un correo y una contraseña de al menos 12 caracteres.');return;}
+ const button=$('el-auth-signup');button.disabled=true;
+ try{
+  const extra=await captchaOptions();
+  const {data,error}=await client.auth.signUp({email,password,...extra});
+  if(error)throw error;
   if(data.session){user=data.user;switchUi();await initAccount();}
   else message('Cuenta solicitada. Confirma tu correo electrónico (si Supabase lo requiere) y después inicia sesión.');
  }catch(e){message('No se pudo crear la cuenta: '+e.message);}
+ finally{button.disabled=false;resetCaptcha();}
 });
 $('el-cloud-push').addEventListener('click',async()=>{
  if(!confirm('¿Guardar los avances de ESTE dispositivo en tu cuenta? Esto reemplazará la copia de la nube.'))return;
@@ -3070,5 +3232,399 @@ try{
 switchUi();
 })();
 </script>
+
+<style id="el-phrasal-sentences-style">
+.el-phase-sentences{margin-top:21px;border:1px solid #c8ddef;background:#f6faff;border-radius:17px;padding:clamp(15px,3vw,23px)}
+.el-phase-sentence-heading{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:15px}
+.el-phase-sentence-heading h3{margin:5px 0 5px;font-size:clamp(18px,2vw,22px);color:#153b61}
+.el-phase-sentence-heading p{margin:0;font-size:13px;color:#536d84;line-height:1.6;max-width:750px}
+.el-phase-sentence-counter{background:#e5f4f0;color:#116954;border:1px solid #c6e5db;padding:8px 11px;font-size:12px;font-weight:800;border-radius:12px;white-space:nowrap}
+.el-phase-sentence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.el-phase-sentence-row{background:#fff;border:1px solid #d6e4f0;border-radius:12px;padding:13px;min-width:0}
+.el-phase-sentence-row:last-child{grid-column:1/-1}
+.el-phase-sentence-row label{display:block;font-size:13px;color:#244f68}
+.el-phase-sentence-row small{font-weight:400;display:block;color:#6b8293;font-size:11px;margin:3px 0 8px}
+.el-phase-sentence-row textarea{font-family:inherit;width:100%;padding:10px 11px;border-radius:9px;border:1px solid #bad1e3;background:white;color:#173a53;font-size:15px;min-height:74px;resize:vertical;line-height:1.4}
+.el-phase-sentence-row textarea:focus-visible{outline:2px solid #3586bc;outline-offset:1px}
+.el-phase-sentence-feedback{font-size:11px;min-height:16px;margin:6px 0 0!important;line-height:1.45}
+.el-phase-sentence-feedback.good{color:#13734d}.el-phase-sentence-feedback.bad{color:#b44351}
+.el-phase-sentence-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:13px}
+.el-phase-sentence-actions button{background:#18739a;color:#fff;border:0;border-radius:10px;min-height:43px;padding:10px 16px;font-weight:800}
+.el-phase-sentence-actions p{font-size:11px;line-height:1.55;color:#657d8c;max-width:520px;margin:0}
+@media(max-width:650px){.el-phase-sentence-grid{grid-template-columns:1fr}.el-phase-sentence-row:last-child{grid-column:auto}.el-phase-sentence-actions button{width:100%}}
+</style>
+
+<style id="el-phrasal-dictados-style">
+.el-dictation-speed{background:#e8f3ff;border:1px solid #cbdff7;border-radius:13px;margin:0 0 15px;padding:13px 15px}
+.el-dictation-speed label{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:800;color:#1b496a;font-size:13px}
+.el-dictation-speed input{width:100%;accent-color:#2069c9;cursor:pointer;margin-top:8px;min-height:25px}
+.el-dictation-speed small{display:block;color:#5a7390;font-size:11px;line-height:1.5}
+.el-dictation-origin{color:#8a5326!important;background:#fff7e9;border-radius:10px;padding:9px 12px;font-size:12px!important}
+.el-dictation-head{display:flex;justify-content:space-between;align-items:center;gap:7px;color:#21476e}
+.el-dictation-done{font-size:11px;color:#236680;background:#edf8ff;border-radius:9px;padding:5px 8px}
+.el-dictation-instruction{font-size:12px!important;color:#6a8194!important;margin:8px 0 11px!important}
+.el-dictation-actions{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.el-dictation-actions button{border:1px solid #bed5e7;background:#edf6ff;color:#164c71;padding:8px 12px;min-height:38px;border-radius:9px;font-size:12px;font-weight:800}
+.el-dictation-actions button:first-child{background:#176cb0;border-color:#176cb0;color:white}
+.el-dictation-hint{background:#fff9e8;border:1px solid #f4dcb0;border-radius:9px;padding:10px;font-size:12px;color:#674c1f;margin-bottom:10px}
+.el-dictation-hint button{border:0;background:transparent;color:#225bad;text-decoration:underline;font-size:12px;font-weight:700;cursor:pointer}
+.el-dictation-label{font-size:12px!important;font-weight:700}
+.el-phase-free label{margin:0 0 8px!important}
+.el-phase-free textarea+label{margin-top:13px!important}
+.el-phase-sentence-grid .el-phase-sentence-row:last-child{grid-column:1/-1}
+@media(max-width:650px){.el-phase-sentence-grid .el-phase-sentence-row:last-child{grid-column:auto}.el-dictation-speed label{font-size:12px}}
+</style>
+
+<style id="el-cambridge-source-style">
+.el-phase-cambridge{margin:15px 0 21px;padding:15px 17px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:#f2f9f5;border:1px solid #bbdcd0;border-radius:15px;color:#174e3f}
+.el-phase-cambridge>div{flex:1;min-width:200px}
+.el-phase-cambridge strong{font-size:14px}
+.el-phase-cambridge p{font-size:12px;line-height:1.6;margin:5px 0}
+.el-phase-cambridge small{display:block;font-size:11px;line-height:1.5;color:#4b7468}
+.el-phase-cambridge-btn{display:inline-block;border-radius:10px;background:#186f56;color:white!important;padding:11px 13px;text-align:center;text-decoration:none;font-size:12px;font-weight:800;white-space:nowrap}
+.el-phase-cambridge-btn:focus-visible{outline:3px solid #a4d7bb;outline-offset:3px}
+@media(max-width:580px){.el-phase-cambridge-btn{width:100%;white-space:normal}}
+</style>
+<style id="el-fluent-uk-style">
+.el-uk-fluent-voice{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:9px}
+.el-uk-fluent-voice label{display:block;font-weight:700;color:#1b496a;font-size:12px;min-width:92px}
+.el-uk-fluent-voice select{flex:1;min-width:145px;max-width:450px;padding:9px;border:1px solid #b9cfe8;background:white;color:#1e405a;border-radius:8px;font-size:13px}
+.el-uk-fluent-natural{padding:8px 12px;border-radius:8px;border:1px solid #176cb0;background:#176cb0;color:white;font-size:12px;font-weight:750;min-height:38px}
+.el-phase-main-audio{flex-wrap:wrap}
+.el-phase-main-audio button{white-space:normal}
+@media(max-width:500px){.el-uk-fluent-voice{align-items:stretch;flex-direction:column}.el-uk-fluent-voice select{width:100%;min-width:0}.el-uk-fluent-natural{width:100%}}
+</style>
+<script id="el-phrasal-learning-phases">
+/* Práctica progresiva; conserva exactamente las expresiones del catálogo original.
+   No inventa significados ni comprueba gramática libre. */
+(()=>{'use strict';
+ const view=document.getElementById('view-phrasals');
+ const source=window.EL_UKPLUS_PHRASES;
+ if(!view||!Array.isArray(source)||source.length===0)return;
+ const clean=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘]/g,"'").toLowerCase().replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
+ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const all=source.filter(x=>typeof x.term==='string'&&x.term.trim());
+ const easyFirst=['get up','wake up','sit down','stand up','go out','come back','turn on','turn off','put on','take off','look after','pick up','get on','get off','find out','come in','go back','come over','get along','check in','fill in','fill out','clean up','give back','look for','go away','get back','get in','run out','put away'];
+ const phases=[
+  {id:'easy',title:'Fase 1 · Fácil',level:'A1–A2',note:'Empieza aquí · palabras cotidianas',difficulty:1},
+  {id:'medium',title:'Fase 2 · Practica',level:'B1',note:'Un poco más de escritura',difficulty:2},
+  {id:'hard',title:'Fase 3 · Reto',level:'B2–C1',note:'Más independencia y opciones',difficulty:3},
+  {id:'explore',title:'Catálogo por revisar',level:'Sin nivel verificado',note:'Phrasals sin significado validado',difficulty:1}
+ ];
+ const pools={};
+ phases.forEach(p=>{pools[p.id]=all.filter(x=>x.level===p.level);});
+ pools.easy.sort((a,b)=>{
+   let ia=easyFirst.indexOf(a.term),ib=easyFirst.indexOf(b.term);
+   if(ia!==-1&&ib!==-1)return ia-ib;
+   if(ia!==-1)return -1;
+   if(ib!==-1)return 1;
+   return (Number(!!b.example)-Number(!!a.example)) || (a.term.length-b.term.length) || a.term.localeCompare(b.term);
+ });
+ const PHRASE_KEY='english-lab-phrasals-2518-five-v2';
+ const KEY='english-lab-phrasal-fases-v1';
+ function parseStored(key){try{const o=JSON.parse(localStorage.getItem(key)||'{}');return o&&typeof o==='object'?o:{}}catch{return {}}}
+ const previous=parseStored(PHRASE_KEY);
+ let state=parseStored(KEY);
+ if(!state.done||typeof state.done!=='object')state.done={};
+ if(!state.answers||typeof state.answers!=='object')state.answers={};
+ if(!state.sentenceDone||typeof state.sentenceDone!=='object')state.sentenceDone={};
+ if(!Number.isFinite(Number(state.audioRate)))state.audioRate=1.0;
+ state.audioRate=Math.min(1.5,Math.max(0.6,Number(state.audioRate)));
+ if(!state.positions||typeof state.positions!=='object')state.positions={};
+ if(!phases.some(p=>p.id===state.phase))state.phase='easy';
+ // Conserva reconocimientos previos sin modificar el guardado anterior.
+ if(previous.done&&typeof previous.done==='object')Object.keys(previous.done).forEach(term=>{if(previous.done[term])state.done[term]=true;});
+ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));return true}catch{return false}};
+ const currentPhase=()=>phases.find(p=>p.id===state.phase)||phases[0];
+ const pool=()=>pools[state.phase]||[];
+ const currIndex=()=>Math.max(0,Math.min(pool().length-1,Number(state.positions[state.phase])||0));
+ const at=()=>pool()[currIndex()];
+ const doneCount=id=>pools[id].filter(x=>!!state.done[x.term]).length;
+ const selected=()=>{const x=at();const stored=state.answers[x.term];const a=stored&&typeof stored==='object'?stored:{heard:false,meaning:'',verb:'',tail:'',written:''};if(!Array.isArray(a.sentences))a.sentences=['','','','',''];a.sentences=Array.from({length:5},(_,i)=>typeof a.sentences[i]==='string'?a.sentences[i].slice(0,240):'');if(!Array.isArray(a.dictations))a.dictations=['','','',''];a.dictations=Array.from({length:4},(_,i)=>typeof a.dictations[i]==='string'?a.dictations[i].slice(0,260):'');if(!Array.isArray(a.dictationPassed))a.dictationPassed=[false,false,false,false];a.dictationPassed=Array.from({length:4},(_,i)=>a.dictationPassed[i]===true);if(typeof a.translation!=='string')a.translation='';return a};
+ const cambridgeSearch=term=>'https://dictionary.cambridge.org/search/english/direct/?q='+encodeURIComponent(String(term).trim());
+ const first=x=>x.term.trim().split(/\s+/)[0];
+ const tail=x=>x.term.trim().split(/\s+/).slice(1).join(' ');
+ // Solo verificamos estructura y presencia del phrasal verb; no calificamos la gramatica libre.
+ const irregular={
+  be:['am','is','are','was','were','been','being'],get:['gets','got','getting','gotten'],wake:['wakes','woke','woken','waking'],
+  go:['goes','went','gone','going'],come:['comes','came','coming'],take:['takes','took','taken','taking'],put:['puts','putting'],
+  give:['gives','gave','given','giving'],run:['runs','ran','running'],sit:['sits','sat','sitting'],stand:['stands','stood','standing'],
+  find:['finds','found','finding'],make:['makes','made','making'],bring:['brings','brought','bringing'],break:['breaks','broke','broken','breaking'],
+  keep:['keeps','kept','keeping'],hold:['holds','held','holding'],leave:['leaves','left','leaving'],feel:['feels','felt','feeling'],
+  think:['thinks','thought','thinking'],see:['sees','saw','seen','seeing'],do:['does','did','done','doing'],
+  have:['has','had','having'],know:['knows','knew','known','knowing'],fall:['falls','fell','fallen','falling'],
+  turn:['turns','turned','turning'],look:['looks','looked','looking'],pick:['picks','picked','picking'],
+  call:['calls','called','calling'],check:['checks','checked','checking'],fill:['fills','filled','filling'],
+  clean:['cleans','cleaned','cleaning'],work:['works','worked','working'],carry:['carries','carried','carrying'],
+  cut:['cuts','cutting'],let:['lets','letting'],set:['sets','setting'],say:['says','said','saying'],
+  write:['writes','wrote','written','writing'],show:['shows','showed','shown','showing'],eat:['eats','ate','eaten','eating']
+ };
+ function forms(verb){
+  const result=new Set([verb,...(irregular[verb]||[])]);
+  if(!/^[a-z]+$/.test(verb))return Array.from(result);
+  if(/[^aeiou]y$/.test(verb))result.add(verb.slice(0,-1)+'ies');
+  else if(/(s|x|z|ch|sh|o)$/.test(verb))result.add(verb+'es');else result.add(verb+'s');
+  if(!irregular[verb]){
+   if(verb.endsWith('e')){result.add(verb+'d');result.add(verb.slice(0,-1)+'ing')}
+   else {result.add(verb+'ed');result.add(verb+'ing')}
+  }
+  return Array.from(result)
+ }
+ function usesPhrase(sentence,expression){
+  const words=clean(sentence).split(' ').filter(Boolean);
+  if(!words.length)return false;
+  for(const candidate of acceptedTerms(expression)){
+   const bits=candidate.split(' ').filter(Boolean);if(!bits.length)continue;
+   const heads=forms(bits[0]);const rest=bits.slice(1);
+   for(let i=0;i<words.length;i++){
+    if(!heads.includes(words[i]))continue;
+    if(!rest.length)return true;
+    if(rest.every((part,k)=>words[i+1+k]===part))return true;
+    // Permite la separacion sencilla: "turn the light off"; no afirma corregir la gramatica.
+    if(rest.length===1&&words.slice(i+1,i+7).includes(rest[0]))return true;
+   }
+  }
+  return false;
+ }
+ const hash=s=>[...String(s)].reduce((v,c)=>(Math.imul(v,31)+c.charCodeAt(0))>>>0,19);
+ function opts(correct,candidates,size,seed){
+   let vals=[correct],uniq=new Set([clean(correct)]);
+   const arr=candidates.filter(y=>y&&clean(y)!==clean(correct)).slice();
+   if(arr.length){let idx=hash(seed)%arr.length;for(let k=0;k<arr.length&&vals.length<size;k++){let v=arr[(idx+k*7)%arr.length];if(!uniq.has(clean(v))){vals.push(v);uniq.add(clean(v))}}}
+   let offset=hash(seed+'order')%vals.length;
+   return vals.slice(offset).concat(vals.slice(0,offset));
+ }
+ function acceptedTerms(term){
+   const text=String(term).trim();const result=[clean(text)];
+   if(text.includes('/')){
+    const segments=text.split(' ');let candidates=[''];
+    for(const token of segments){let t=token.split('/');candidates=candidates.flatMap(base=>t.map(bit=>(base+' '+bit).trim())).slice(0,64)}
+    result.push(...candidates.map(clean));
+    // E.g. 'abound in/with': both 'abound in' and 'abound with'.
+   }
+   return new Set(result);
+ }
+ // Oraciones de uso cotidiano revisadas manualmente para los primeros 30 phrasals.
+ const curatedDictations={"get at":["What are you getting at?","I see what you are getting at.","What is she getting at?","I understand what you are getting at."],"get up":["I get up at seven.","She gets up early on Mondays.","We get up before breakfast.","They get up at eight on Sundays."],"wake up":["I wake up at six.","My brother wakes up early.","We wake up when the alarm rings.","She woke up late yesterday."],"sit down":["Please sit down here.","We sit down after lunch.","The children sat down quietly.","He sits down near the window."],"stand up":["Please stand up.","We stand up when the teacher arrives.","She stood up to answer.","I stand up after a long journey."],"go out":["I go out with my friends.","She goes out on Fridays.","We went out for dinner.","They go out after school."],"come back":["Please come back soon.","He comes back after lunch.","We came back home early.","They will come back tomorrow."],"turn on":["Please turn on the light.","She turns on the radio.","I turned on the computer.","Can you turn on the heating?"],"turn off":["Please turn off the light.","He turns off the television.","We turned off our phones.","Can you turn off the tap?"],"put on":["Please put on your coat.","She puts on her shoes.","He put on a warm jumper.","I put on my glasses to read."],"take off":["Please take off your shoes.","She takes off her coat.","He took off his hat.","I took off my boots at the door."],"look after":["I look after my little brother.","She looks after the dog.","We looked after our neighbour's cat.","Can you look after my bag?"],"pick up":["Please pick up your book.","She picks up the phone.","I picked up my keys.","Can you pick up the parcel?"],"get on":["We get on the bus near our house.","She gets on the train at eight.","I got on the wrong bus.","Please get on the bus now."],"get off":["I get off the bus here.","She gets off at the next stop.","We got off the train at York.","Please get off the bus carefully."],"find out":["I want to find out the answer.","She found out the truth.","We need to find out why.","Can you find out the train times?"],"come in":["Please come in.","Come in and sit down.","He came in quietly.","They come in through the front door."],"go back":["I want to go back home.","She went back to school.","We go back every summer.","Please go back to your seat."],"come over":["Can you come over tomorrow?","My cousins come over on Sundays.","She came over after school.","Please come over for tea."],"get along":["We get along well.","I get along with my classmates.","They got along at school.","Does she get along with her brother?"],"check in":["We check in at the airport.","She checked in online.","Please check in before noon.","I need to check in at the hotel."],"fill in":["Please fill in this form.","I filled in my name.","She fills in the missing words.","We need to fill in the details."],"fill out":["Please fill out this form.","She filled out the application.","I need to fill out the details.","He fills out the form online."],"clean up":["Please clean up your room.","We clean up after dinner.","She cleaned up the kitchen.","I will clean up the mess."],"give back":["Please give back the book.","She gave back my keys.","I will give back the money.","He gives back the borrowed books."],"look for":["I am looking for my keys.","She looks for her bag.","We looked for the cat.","Can you look for my phone?"],"go away":["Please go away.","We go away every summer.","He went away for the weekend.","She wants to go away for a few days."],"get back":["I get back at six.","She got back late.","When will you get back?","We get back from school at four."],"get in":["Please get in the car.","We get in the car quickly.","She got in the taxi.","Can you get in the car?"],"run out":["We ran out of milk.","I run out of time sometimes.","She ran out of paper.","They are running out of ideas."],"put away":["Please put away your toys.","She puts away her books.","I put away the dishes.","We put away our coats."]};
+ function dictationsFor(x){
+  if(curatedDictations[x.term])return {lines:curatedDictations[x.term],kind:'usage'};
+  // Para expresiones no revisadas: práctica de dictado METALINGÜÍSTICO, no ejemplos ficticios de uso.
+  const term=String(x.term).replace(/\/[^\s/]+/g,'').trim();
+  if(x.example&&typeof x.example==='string'){
+   return {kind:'mixed',lines:[x.example,
+    `I am learning the expression "${term}".`,
+    `Please say "${term}" slowly.`,
+    `We are practising the words "${term}" today.`]};
+  }
+  return {kind:'form',lines:[
+   `I am learning the expression "${term}".`,
+   `Please say "${term}" slowly.`,
+   `Can you write "${term}" in your notebook?`,
+   `We are practising the words "${term}" today.`]};
+ }
+ function dictationChecks(a,d){
+  return d.lines.map((line,j)=>{
+   if(!String(a.dictations[j]||'').trim())return {ok:false, message:'Escucha y escribe la oración.'};
+   if(clean(a.dictations[j])!==clean(line))return {ok:false,message:'Revisa lo que escuchaste. Usa «Pista» y vuelve a intentarlo.'};
+   return {ok:true,message:'✓ Dictado correcto.'};
+  });
+ }
+ function freeCheck(a,x){
+  const text=String(a.sentences[4]||'').trim(),translation=String(a.translation||'').trim();
+  const words=clean(text).split(' ').filter(Boolean);
+  if(!text||words.length<3)return {ok:false,message:'Escribe tu oración en inglés (al menos tres palabras).'};
+  if(!usesPhrase(text,x.term))return {ok:false,message:'Incluye el phrasal verb mostrado arriba. Puedes usar una forma conjugada.'};
+  if(dictationsFor(x).lines.some(line=>clean(line)===clean(text)))return {ok:false,message:'Inventa una oración diferente de las cuatro que escuchaste.'};
+  if(translation.split(/\s+/).filter(Boolean).length<2)return {ok:false,message:'Escribe también su traducción al español.'};
+  return {ok:true,message:'✓ Oración y traducción registradas. La gramática y el significado de la traducción necesitan revisión humana.'};
+ }
+ function status(msg){let e=host.querySelector('#el-phase-status');if(e)e.textContent=msg}
+ // Voz en-GB: selección explícita y prioridad de motores de sonido natural cuando existan.
+ // El navegador elige la síntesis real: no alteramos la ortografía ni prometemos audio humano.
+ const PREFERRED_VOICE_KEY='english-lab-phrasal-en-gb-voice-v1';
+ let preferredVoiceURI='';
+ try{preferredVoiceURI=localStorage.getItem(PREFERRED_VOICE_KEY)||'';}catch{}
+ const englishVoices=()=>{
+  try{
+   const voices=window.speechSynthesis?.getVoices?.()||[];
+   const score=v=>{
+    const name=String(v.name||'');
+    const lang=String(v.lang||'');
+    const uk=/^en[-_]GB$/i.test(lang);
+    return (uk?200:0)
+       +(/neural|natural|enhanced|premium/i.test(name)?100:0)
+       +(/google uk english|microsoft.*(uk|great britain|sonia|ryan|libby)/i.test(name)?35:0)
+       +(/compact|espeak|robot/i.test(name)?-60:0);
+   };
+   return voices.filter(v=>/^en(?:[-_]|$)/i.test(String(v.lang||'')))
+                .sort((a,b)=>score(b)-score(a));
+  }catch{return []}
+ };
+ function selectEnglishVoice(){
+  const voices=englishVoices();
+  return voices.find(v=>v.voiceURI===preferredVoiceURI)||voices[0]||null;
+ }
+ function refreshVoiceSelector(){
+  const select=host.querySelector('#el-phase-voice-choice');if(!select)return;
+  const voices=englishVoices(),old=select.value;
+  select.replaceChildren();
+  if(!voices.length){select.add(new Option('Voz automática del navegador',''));select.disabled=true;return;}
+  select.disabled=false;
+  voices.forEach(v=>select.add(new Option((/^en[-_]GB$/i.test(v.lang)?'🇬🇧 UK · ':'EN · ')+v.name,v.voiceURI)));
+  const chosen=voices.find(v=>v.voiceURI===preferredVoiceURI)
+    ||voices.find(v=>v.voiceURI===old)||voices[0];
+  select.value=chosen.voiceURI;
+ }
+ function naturalSpeechText(raw){
+  // Las comillas de los dictados metalingüísticos generan pausas artificiales.
+  // Solo se omiten al hablar, nunca en el texto que el alumno debe escribir.
+  const text=String(raw||'').replace(/[“”„"]/g,'').replace(/\s+/g,' ').trim();
+  // No leer la barra ni insertar la palabra española 'o' en un audio inglés.
+  return text.includes('/') ? text.replace(/\S*\/\S*/g, token=>token.split('/')[0]) : text;
+ }
+ function speech(text,slow=false){
+  if(!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance==='undefined'){
+   status('Tu navegador no dispone de lectura de voz. Consulta la pronunciación UK en Cambridge.');return false;
+  }
+  try{
+   const british=selectEnglishVoice();
+   const spoken=naturalSpeechText(text);
+   if(!spoken)return false;
+   window.speechSynthesis.cancel();
+   const utterance=new SpeechSynthesisUtterance(spoken); // Una sola frase, sin cortes artificiales entre palabras.
+   if(british)utterance.voice=british;utterance.lang=british?.lang||'en-GB';utterance.pitch=1;utterance.volume=1;
+   utterance.rate=slow?Math.max(0.6,state.audioRate*0.78):state.audioRate;
+   utterance.onerror=e=>{if(!['canceled','interrupted'].includes(e.error))status('No se pudo reproducir la voz. Prueba otra voz inglesa o escucha el audio UK de Cambridge.');};
+   window.speechSynthesis.speak(utterance);
+   status((british&&!/^en[-_]GB$/i.test(british.lang))?'No hay voz británica en el dispositivo: usando otra voz en inglés. Puedes escuchar el audio UK oficial en Cambridge.':(slow?'Reproduciendo lentamente con voz británica.':'Reproduciendo la frase completa con ritmo británico.'));
+   return true;
+  }catch{status('No se pudo reproducir el audio. Revisa la voz británica en los ajustes del dispositivo.');return false}
+ }
+ const exampleToHear=x=>curatedDictations[x.term]?.[0]
+   ||(x.term==='get at'?'What are you getting at?':'')
+   ||(typeof x.example==='string'&&x.example.trim()?x.example.trim():'');
+ const host=document.createElement('section');
+ host.id='el-phrasal-phases';host.className='el-study-phases';host.setAttribute('aria-label','Aprender phrasal verbs por fases con pronunciación');
+ const before=view.querySelector('#pv-catalogue')||view.querySelector('.pv-wide-catalogue');
+ if(before)before.before(host);else view.prepend(host);
+ const extended=document.getElementById('view-phrasalplus');
+ if(extended){const jump=document.createElement('div');jump.className='el-phases-jump';jump.innerHTML='<strong>🎧 ¿Empiezas con los phrasal verbs?</strong><p>Practica desde lo más fácil: mira la expresión, escúchala y completa cinco actividades cortas.</p><button type="button" class="btn primary" data-view="phrasals">Abrir práctica por fases</button>';extended.querySelector('.ukplus-steps')?.after(jump)}
+ let feedback=null;
+ function buttonGroup(id,choices,value){return `<div class="el-phase-choices" role="group" aria-label="Opciones de la pregunta">${choices.map(v=>`<button type="button" class="el-phase-choice ${clean(v)===clean(value)?'chosen':''}" data-pick="${id}" data-value="${esc(v)}" aria-pressed="${clean(v)===clean(value)}">${esc(v)}</button>`).join('')}</div>`}
+ function card(n,title,inner){return `<div class="el-phase-card" data-card="${n}"><span class="el-phase-step">${n} de 5</span><h3>${title}</h3>${inner}<p class="el-phase-feedback" id="el-phase-feedback-${n}" aria-live="polite"></p></div>`}
+ function render(){
+  const p=currentPhase(),x=at();if(!x){host.textContent='No hay expresiones en esta fase.';return}
+  const i=currIndex(),a=selected(),hasMeaning=!!String(x.meaning||'').trim(),hasExample=!!String(x.example||'').trim();
+  const count=doneCount(p.id),done=!!state.done[x.term],d=dictationsFor(x),dictationsDone=a.dictationPassed.every(Boolean),sentencesDone=!!state.sentenceDone[x.term]&&dictationsDone&&!!a.finalChecked,canAdvance=done&&sentencesDone;
+  const meaningPool=pools[p.id].map(y=>y.meaning).filter(Boolean);
+  const otherPool=pools[p.id];
+  const mOptions=hasMeaning?opts(x.meaning,meaningPool,p.difficulty===3?4:3,x.term+'meaning'):[];
+  const vOptions=opts(first(x),otherPool.map(first),3,x.term+'verb');
+  const tOptions=opts(tail(x),otherPool.map(tail),3,x.term+'tail');
+  const listWords=Array.from(x.term.trim().split(/\s+/));
+  const dictUrl=cambridgeSearch(x.term);
+  const usage=hasMeaning?`<div class="el-phase-usage"><strong>💡 ¿Para qué se usa?</strong><p>En esta ficha significa: <b>${esc(x.meaning)}</b>.</p>${hasExample?`<p><b>Ejemplo del catálogo, no validado por Cambridge:</b> <em lang="en">${esc(x.example)}</em></p>`:''}<small>El significado puede cambiar según el contexto.</small></div>`:`<div class="el-phase-usage el-phase-unverified"><strong>📚 Significado pendiente de revisión</strong><p>Esta expresión forma parte de las 2.518, pero el archivo no contiene un significado revisado. Aquí practicaremos su forma y pronunciación sin inventar una traducción.</p><a href="${dictUrl}" target="_blank" rel="noopener noreferrer">Consultar Cambridge Dictionary</a></div>`;
+  const q1=card(1,'Escucha cómo se pronuncia',`<p>Pulsa el altavoz y repite: <strong lang="en">${esc(x.term)}</strong>.</p><div class="el-phase-audio"><button type="button" id="el-phase-play" class="el-phase-voice">🔊 Escuchar</button><button type="button" id="el-phase-slow" class="el-phase-voice light">🐢 Más lento</button></div><label class="el-phase-checkline"><input type="checkbox" id="el-phase-heard" ${a.heard?'checked':''}> Ya la escuché o practiqué leyendo</label>`);
+  const q2=hasMeaning?card(2,'Elige qué significa',`<p>Selecciona una respuesta. Puedes mirar la explicación de arriba.</p>${buttonGroup('meaning',mOptions,a.meaning||'')}`):card(2,'Encuentra el verbo',`<p>¿Cuál es la primera palabra de <strong lang="en">${esc(x.term)}</strong>?</p>${buttonGroup('verb',vOptions,a.verb||'')}`);
+  const q3=hasMeaning?card(3,p.difficulty===1?'Reconoce el verbo':'Escribe el verbo',`<p>El verbo es la primera palabra de la expresión.</p>${p.difficulty===1?buttonGroup('verb',vOptions,a.verb||''):`<input data-phrase-input="verb" type="text" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="Primera palabra" value="${esc(a.verb||'')}">`}`):card(3,'Elige lo que acompaña al verbo',`<p>¿Qué palabra o palabras van después del verbo?</p>${buttonGroup('tail',tOptions,a.tail||'')}`);
+  const q4=hasMeaning?card(4,p.difficulty===1?'Completa la expresión':'Escribe la segunda parte',`<p>¿Qué viene después de <strong lang="en">${esc(first(x))}</strong>?</p>${p.difficulty===1?buttonGroup('tail',tOptions,a.tail||''):`<input data-phrase-input="tail" type="text" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="Última palabra o palabras" value="${esc(a.tail||'')}">`}`):card(4,'Escribe la primera palabra',`<p>Puedes mirar arriba si lo necesitas.</p><input data-phrase-input="verbWrite" type="text" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="Escribe el verbo" value="${esc(a.verbWrite||'')}">`);
+  const q5=card(5,'Escribe el phrasal verb completo',`<p>Mira la expresión grande de arriba y escríbela aquí. Después crearás cinco oraciones.</p><input data-phrase-input="written" type="text" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="Escribe el phrasal verb" value="${esc(a.written||'')}">`);
+  const dictationRows=d.lines.map((line,j)=>`<div class="el-phase-sentence-row"><div class="el-dictation-head"><b>🎧 Dictado ${j+1} de 4</b><span class="el-dictation-done" id="el-dictation-done-${j}">${a.dictationPassed[j]?'✓ Completo':'Pendiente'}</span></div><p class="el-dictation-instruction">Escucha la oración en inglés y escríbela. Puedes repetir el audio.</p><div class="el-dictation-actions"><button type="button" data-dictate="${j}">🔊 Escuchar fluido</button><button type="button" data-dictate-hint="${j}" aria-expanded="false">💡 Pista</button></div><div class="el-dictation-hint" id="el-dictation-hint-${j}" hidden></div><label for="el-phase-dictation-${j}" class="el-dictation-label">Tu dictado en inglés:</label><textarea id="el-phase-dictation-${j}" data-phase-dictation="${j}" rows="2" maxlength="260" spellcheck="true" autocapitalize="sentences" lang="en" placeholder="Escucha y escribe la oración…">${esc(a.dictations[j])}</textarea><p class="el-phase-sentence-feedback" id="el-phase-sentence-feedback-${j}" aria-live="polite"></p></div>`).join('');
+  const finalRow=`<div class="el-phase-sentence-row el-phase-free"><label for="el-phase-sentence-4"><b>✍️ 5. Ahora crea tu propia oración</b><small>Escribe una oración sencilla en inglés usando <span lang="en">${esc(x.term)}</span>, sin copiar las cuatro anteriores.</small></label><textarea id="el-phase-sentence-4" data-phase-sentence="4" rows="3" maxlength="240" spellcheck="true" lang="en" placeholder="Escribe aquí tu oración libre en inglés…">${esc(a.sentences[4])}</textarea><label for="el-phase-translation"><b>🇵🇪 Traduce tu oración al español (obligatorio)</b><small>Traduce la oración que acabas de escribir, no el phrasal verb aislado.</small></label><textarea id="el-phase-translation" rows="2" maxlength="300" lang="es" placeholder="Escribe aquí qué significa tu oración en español…">${esc(a.translation)}</textarea><p class="el-phase-sentence-feedback" id="el-phase-sentence-feedback-4" aria-live="polite"></p></div>`;
+  host.innerHTML=`<div class="el-phase-head"><div><div class="el-phase-eyebrow">🇬🇧 BRITISH ENGLISH · APRENDE PASO A PASO</div><h2>Phrasal verbs fáciles de aprender</h2><p>Primero escucha y reconoce; después escribe. Puedes ver la expresión todo el tiempo.</p></div><div class="el-phase-count">Catálogo: <strong>${all.length.toLocaleString('es-PE')}</strong> expresiones</div></div>
+   <div class="el-phase-tabs" role="group" aria-label="Elegir la dificultad">${phases.map(q=>`<button type="button" class="el-phase-tab ${p.id===q.id?'active':''}" data-phase="${q.id}" aria-pressed="${p.id===q.id}"><strong>${esc(q.title)}</strong><span>${pools[q.id].length.toLocaleString('es-PE')} · ${esc(q.note)}</span></button>`).join('')}</div>
+   <div class="el-phase-progress"><div><b>${esc(p.title)}</b><span>Expresión ${i+1} de ${pool().length} · ${count} completadas</span></div><div class="el-phase-bar" role="progressbar" aria-label="Expresiones completadas" aria-valuemin="0" aria-valuemax="${pool().length}" aria-valuenow="${count}"><span style="width:${Math.round(count*100/pool().length)}%"></span></div></div>
+   <div class="el-phase-hero"><span>PHRASAL VERB ACTUAL</span><h2 lang="en">${esc(x.term)}</h2><div class="el-phase-main-audio"><button type="button" id="el-phase-top-play">🔊 Pronunciación</button><button type="button" id="el-phase-top-slow">🐢 Escuchar lento</button>${exampleToHear(x)?'<button type="button" id="el-phase-context-play">🎙️ Voz conversacional · en una frase</button>':''}</div><p>Escucha el phrasal verb y, cuando haya ejemplo, óyelo dentro de una frase: las palabras se enlazan mejor al hablar con naturalidad.</p></div>
+   ${usage}
+   <aside class="el-phase-cambridge" aria-label="Fuente externa de consulta"><div><strong>📖 Consulta el Cambridge Dictionary oficial</strong><p>Abre la búsqueda de <b lang="en">${esc(x.term)}</b> para comprobar acepciones, gramática, ejemplos y pronunciación UK cuando estén disponibles.</p><small>Cambridge es una fuente externa de consulta. Las explicaciones, traducciones y dictados de English Lab UK son material propio y no están certificados por Cambridge.</small></div><a class="el-phase-cambridge-btn" target="_blank" rel="noopener noreferrer" href="${dictUrl}" aria-label="Buscar ${esc(x.term)} en Cambridge Dictionary oficial">Consultar Cambridge ↗</a></aside>
+   <div class="el-phase-tasks"><div class="el-phase-tasks-title"><h3>Tu práctica · cinco pasos sencillos</h3><span>Completa estos 5 y luego escribe tus oraciones</span></div><div class="el-phase-grid">${q1+q2+q3+q4+q5}</div></div>
+   <section class="el-phase-sentences" aria-labelledby="el-phase-sentences-title"><div class="el-phase-sentence-heading"><div><span class="el-phase-eyebrow">✍️ ORACIONES POR FASES</span><h3 id="el-phase-sentences-title">4 dictados + 1 oración tuya</h3><p>Las cuatro primeras son dictados: escucha, mira una pista si hace falta y escribe. En la quinta inventas una oración y agregas su traducción al español.</p>${d.kind==='form'?'<p class="el-dictation-origin">Nota: esta expresión no tiene un ejemplo contextual revisado en el catálogo. Los dictados practican cómo escribir la expresión, sin inventar su significado.</p>':d.kind==='mixed'?'<p class="el-dictation-origin">El primer dictado usa un ejemplo incluido en el catálogo original, sin verificación de Cambridge; los otros tres practican cómo escribir la expresión.</p>':''}</div><span class="el-phase-sentence-counter" id="el-phase-sentence-counter">${sentencesDone?'5/5 completos':a.dictationPassed.filter(Boolean).length+'/4 dictados'}</span></div><div class="el-dictation-speed"><label for="el-dictation-speed">🇬🇧 Velocidad de pronunciación <output id="el-dictation-speed-value">${state.audioRate.toFixed(2)}×</output></label><input id="el-dictation-speed" aria-label="Velocidad de pronunciación" type="range" min="0.6" max="1.5" step="0.05" value="${state.audioRate}"><small>0,60× para practicar · 1,00× ritmo habitual · 1,50× conversación rápida. Para sonidos más unidos, usa «Ritmo natural» y prueba las voces británicas disponibles.</small><div class="el-uk-fluent-voice"><label for="el-phase-voice-choice">Elegir voz</label><select id="el-phase-voice-choice" aria-label="Elegir voz en inglés, priorizando acento británico"></select><button id="el-phase-natural-speed" type="button" class="el-uk-fluent-natural">🎙️ Estilo conversación · 1,00×</button></div><small>Esta lectura usa las voces de tu celular; no es una grabación de podcast. Para audio humano en inglés británico, consulta UK en Cambridge.</small></div><div class="el-phase-sentence-grid">${dictationRows}${finalRow}</div><div class="el-phase-sentence-actions"><button type="button" id="el-phase-sentence-check">✓ Comprobar mis 4 dictados y mi oración</button><p>Los dictados se comparan con textos establecidos en esta práctica. La última oración debe incluir la expresión y tener traducción, pero la plataforma <strong>no promete corregir automáticamente toda la gramática ni la calidad de la traducción</strong>.</p></div></section>
+   <div class="el-phase-controls"><button type="button" id="el-phase-check" class="el-phase-main-btn">✓ Comprobar mis 5 pasos</button><button type="button" id="el-phase-prev" class="el-phase-secondary" ${i===0?'disabled':''}>← Anterior</button><button type="button" id="el-phase-next" class="el-phase-next" ${canAdvance?'':'disabled'}>Siguiente phrasal verb →</button></div>
+   <p class="el-phase-message" id="el-phase-status" role="status">${canAdvance?'✓ ¡Todo completo! Puedes avanzar.':done?'✓ Cinco pasos completos. Ahora realiza los cuatro dictados y tu oración libre.':'Completa los cinco pasos, cuatro dictados y tu oración con traducción para continuar.'}</p><p class="el-phase-local-note">Tus respuestas de esta práctica se guardan en este navegador. No modificamos tus avances en Supabase ni las otras actividades de English Lab UK.</p>`;
+  const remember=()=>{state.answers[x.term]=a;if(!save())status('No se pudo guardar el progreso en este navegador.');};
+  host.querySelectorAll('[data-phase]').forEach(b=>b.onclick=()=>{state.phase=b.dataset.phase;feedback=null;remember();render();host.scrollIntoView({block:'start',behavior:'smooth'});});
+  function play(slow=false){speech(x.term,slow);a.heard=true;host.querySelector('#el-phase-heard').checked=true;remember()}
+  host.querySelector('#el-phase-play').onclick=()=>play(false);
+  host.querySelector('#el-phase-slow').onclick=()=>play(true);
+  host.querySelector('#el-phase-top-play').onclick=()=>play(false);
+  host.querySelector('#el-phase-top-slow').onclick=()=>play(true);
+  const contextButton=host.querySelector('#el-phase-context-play');
+  if(contextButton)contextButton.onclick=()=>speech(exampleToHear(x));
+  host.querySelector('#el-phase-heard').onchange=e=>{a.heard=e.target.checked;if(!a.heard){state.done[x.term]=false;host.querySelector('#el-phase-next').disabled=true;}remember()};
+  host.querySelectorAll('[data-pick]').forEach(btn=>btn.onclick=()=>{
+    const key=btn.dataset.pick;if(a[key]!==btn.dataset.value){state.done[x.term]=false;host.querySelector('#el-phase-next').disabled=true;}a[key]=btn.dataset.value;remember();
+    host.querySelectorAll(`[data-pick="${key}"]`).forEach(b=>{let selected=b===btn;b.classList.toggle('chosen',selected);b.setAttribute('aria-pressed',String(selected))});
+  });
+  host.querySelectorAll('[data-phrase-input]').forEach(input=>input.addEventListener('input',()=>{a[input.dataset.phraseInput]=input.value;state.done[x.term]=false;host.querySelector('#el-phase-next').disabled=true;remember()}));
+  const audioRate=host.querySelector('#el-dictation-speed');
+  audioRate.oninput=()=>{state.audioRate=Number(audioRate.value);host.querySelector('#el-dictation-speed-value').textContent=state.audioRate.toFixed(2)+'×';save();};
+  const naturalButton=host.querySelector('#el-phase-natural-speed');
+  naturalButton.onclick=()=>{
+   state.audioRate=1.0;audioRate.value='1';
+   host.querySelector('#el-dictation-speed-value').textContent='1.00×';save();
+   speech(exampleToHear(x)||d.lines[0]);
+  };
+  refreshVoiceSelector();
+  host.querySelector('#el-phase-voice-choice').onchange=e=>{
+   preferredVoiceURI=e.target.value;
+   try{localStorage.setItem(PREFERRED_VOICE_KEY,preferredVoiceURI)}catch{}
+   speech(d.lines[0]);
+  };
+  host.querySelectorAll('[data-dictate]').forEach(btn=>btn.onclick=()=>speech(d.lines[Number(btn.dataset.dictate)],false));
+  host.querySelectorAll('[data-dictate-hint]').forEach(btn=>btn.onclick=()=>{
+   const n=Number(btn.dataset.dictateHint),el=host.querySelector('#el-dictation-hint-'+n),text=d.lines[n],visible=btn.getAttribute('aria-expanded')==='true';
+   if(visible){el.hidden=true;btn.setAttribute('aria-expanded','false');return;}
+   const words=text.trim().split(/\s+/);el.innerHTML=`💡 Son <b>${words.length} palabras</b>. Empieza con: <b lang="en">${esc(words.slice(0,Math.min(words.length,3)).join(' '))}</b>… <button type="button" data-show-target="${n}">Ver oración escrita</button>`;
+   el.hidden=false;btn.setAttribute('aria-expanded','true');
+   el.querySelector('[data-show-target]').onclick=()=>{el.innerHTML=`<b>Oración para estudiar:</b> <span lang="en">${esc(text)}</span><br><small>Practícala escuchando de nuevo antes de comprobar.</small>`;};
+  });
+  host.querySelectorAll('[data-phase-dictation]').forEach(box=>box.addEventListener('input',()=>{
+   const n=Number(box.dataset.phaseDictation);a.dictations[n]=box.value;a.dictationPassed[n]=false;state.sentenceDone[x.term]=false;a.finalChecked=false;
+   host.querySelector('#el-dictation-done-'+n).textContent='Sin comprobar';host.querySelector('#el-phase-next').disabled=true;
+   host.querySelector('#el-phase-sentence-counter').textContent='Cambios sin comprobar';
+   const f=host.querySelector('#el-phase-sentence-feedback-'+n);f.textContent='';f.className='el-phase-sentence-feedback';remember();
+  }));
+  const free=host.querySelector('#el-phase-sentence-4'),translated=host.querySelector('#el-phase-translation');
+  const onFreeChange=()=>{a.sentences[4]=free.value;a.translation=translated.value;a.finalChecked=false;state.sentenceDone[x.term]=false;host.querySelector('#el-phase-next').disabled=true;host.querySelector('#el-phase-sentence-counter').textContent='Cambios sin comprobar';const f=host.querySelector('#el-phase-sentence-feedback-4');f.textContent='';f.className='el-phase-sentence-feedback';remember();};
+  free.addEventListener('input',onFreeChange);translated.addEventListener('input',onFreeChange);
+  host.querySelector('#el-phase-sentence-check').onclick=()=>{
+   const results=dictationChecks(a,d);a.dictationPassed=results.map(r=>r.ok);
+   const freeResult=freeCheck(a,x);a.finalChecked=freeResult.ok;
+   const n=results.filter(r=>r.ok).length+(freeResult.ok?1:0);
+   [...results,freeResult].forEach((r,j)=>{const item=host.querySelector('#el-phase-sentence-feedback-'+j);item.textContent=r.message;item.className='el-phase-sentence-feedback '+(r.ok?'good':'bad');if(j<4)host.querySelector('#el-dictation-done-'+j).textContent=r.ok?'✓ Completo':'Revisar';});
+   state.sentenceDone[x.term]=n===5;host.querySelector('#el-phase-sentence-counter').textContent=n+'/5 completos';
+   host.querySelector('#el-phase-next').disabled=!(state.done[x.term]&&state.sentenceDone[x.term]);
+   status(n===5?(state.done[x.term]?'🎉 ¡Los cinco pasos y las cinco oraciones completas! Puedes avanzar.':'✓ ¡Los cuatro dictados y tu oración libre completos! Revisa los cinco pasos de arriba.'):`Tienes ${n}/5 oraciones completas. Corrige los campos indicados.`);
+   remember();
+  };
+  host.querySelector('#el-phase-prev').onclick=()=>{if(i===0)return;state.positions[state.phase]=i-1;feedback=null;remember();render();host.scrollIntoView({block:'start',behavior:'smooth'});};
+  host.querySelector('#el-phase-next').onclick=()=>{
+   if(!(state.done[x.term]&&state.sentenceDone[x.term])){status('Para avanzar, completa los cinco pasos, cuatro dictados y tu oración con traducción.');return;}
+   if(i+1>=pool().length){status('🎉 ¡Terminaste esta fase! Puedes practicar otra o repetir las expresiones.');return}
+   state.positions[state.phase]=i+1;feedback=null;remember();render();host.scrollIntoView({block:'start',behavior:'smooth'});
+  };
+  host.querySelector('#el-phase-check').onclick=()=>{
+    const isVerified=hasMeaning;
+    const correct=[!!a.heard,
+      isVerified?clean(a.meaning)===clean(x.meaning):clean(a.verb)===clean(first(x)),
+      isVerified?clean(a.verb)===clean(first(x)):clean(a.tail)===clean(tail(x)),
+      isVerified?clean(a.tail)===clean(tail(x)):clean(a.verbWrite)===clean(first(x)),
+      acceptedTerms(x.term).has(clean(a.written))];
+    const messages=['Pulsa 🔊 Escuchar o marca que has practicado leyendo.','Revisa la explicación y elige otra opción.','Mira la primera palabra del phrasal verb.','Revisa la palabra que acompaña al verbo.','Copia la expresión completa que aparece arriba.'];
+    if(!isVerified){messages[1]='Elige la primera palabra del phrasal verb.';messages[2]='Elige las palabras que siguen al verbo.';messages[3]='Escribe la primera palabra del phrasal verb.';}
+    correct.forEach((ok,j)=>{const text=host.querySelector('#el-phase-feedback-'+(j+1)),card=host.querySelector(`[data-card="${j+1}"]`);text.textContent=ok?'✓ ¡Bien!':messages[j];text.className='el-phase-feedback '+(ok?'good':'bad');card.classList.toggle('pass',ok);card.classList.toggle('retry',!ok)});
+    const num=correct.filter(Boolean).length;
+    if(num===5){state.done[x.term]=true;host.querySelector('#el-phase-next').disabled=!state.sentenceDone[x.term];status(state.sentenceDone[x.term]?'🎉 ¡Cinco pasos y cinco oraciones completas! Puedes avanzar.':'✓ ¡5 de 5 pasos! Ahora comprueba los cuatro dictados y la oración libre.');}
+    else{state.done[x.term]=false;host.querySelector('#el-phase-next').disabled=true;status(`Llevas ${num}/5 pasos correctos. Corrige los marcados; puedes mirar el phrasal verb todas las veces que quieras.`)}
+    remember();
+   };
+ }
+ render();save();
+ if('speechSynthesis' in window){
+  window.speechSynthesis.addEventListener?.('voiceschanged',refreshVoiceSelector);
+ }
+})();
+</script>
+
 </body>
 </html>
